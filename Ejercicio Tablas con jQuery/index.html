@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio Tablas</title>
+    <meta charset="utf-8"/>
+    
+</head>
+<body>
+
+    <table id="tabla">
+        <!-- Cabecera de la tabla -->
+        <thead>
+            <tr>
+                <th>Nombre del Curso</th>
+                <th>Duración</th>
+                
+                
+            </tr>
+        </thead>
+
+        <!-- Cuerpo de la tabla con los campos -->
+        <tbody>
+
+            <!-- fila base para clonar y agregar al final -->
+            <tr class="fila-base">
+                <td><input type="text" class="nombre" /></td>
+                <td><input type="text" class="apellidos" /></td>
+               
+                <td class="eliminar">Eliminar</td>
+            </tr>
+            <!-- fin de código: fila base -->
+            <!-- Fila de ejemplo -->
+            <tr>
+                <td><input type="text" class="nombre" /></td>
+                <td><input type="text" class="apellidos" /></td>
+              
+                <td class="eliminar">Eliminar</td>
+            </tr>
+        <!-- fin de código: fila de ejemplo -->
+            <!-- Fila de ejemplo -->
+        <tr>
+            <td><input type="text" class="nombre"/></td>
+            <td><input type="text" class="apellidos"/></td>
+
+            <td class="eliminar">Eliminar</td>
+        </tr>
+            <!-- fin de código: fila de ejemplo -->
+            <!-- Fila de ejemplo -->
+        <tr>
+            <td><input type="text" class="nombre"/></td>
+            <td><input type="text" class="apellidos"/></td>
+
+            <td class="eliminar">Eliminar</td>
+        </tr>
+            <!-- fin de código: fila de ejemplo -->
+            <!-- Fila de ejemplo -->
+        <tr>
+            <td><input type="text" class="nombre"/></td>
+            <td><input type="text" class="apellidos"/></td>
+
+            <td class="eliminar">Eliminar</td>
+        </tr>
+            <!-- fin de código: fila de ejemplo -->
+            <!-- Fila de ejemplo -->
+            <tr>
+                <td><input type="text" class="nombre" /></td>
+                <td><input type="text" class="apellidos" /></td>
+
+                <td class="eliminar">Eliminar</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+
+
+    <ul>
+        <li><a href="#modal1">NUEVO</a></li>
+
+    </ul>
+    <div id="modal1" class="modalmask">
+        <div class="modalbox movedown">
+            <a href="#close" title="Close" class="close">X</a>
+            <h2>NUEVO</h2>
+            <p>Nombre del Curso</p>
+            <p><input type="text"/></p>
+            <p>Duración</p>
+            <p><input type="text"/></p>
+            <p><input type="button" value="OK"/></p>
+
+            
+        </div>
+
+<style type="text/css">
+    #tabla {
+        border: solid 1px #333;
+        width: 300px;
+    }
+
+    #tabla tbody tr {
+        background: #999;
+    }
+
+    .fila-base {
+        display: none;
+    }
+    /* fila base oculta */
+    .eliminar {
+        cursor: pointer;
+        color: #000;
+    }
+
+    input[type="text"] {
+        width: 80px;
+    }
+/* ancho a los elementos input="text" */
+
+.modalmask {
+    position: fixed;
+    font-family: Arial, sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 99999;
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+}
+.modalmask:target {
+    opacity:1;
+    pointer-events: auto;
+}
+
+.modalbox{
+    width: 400px;
+    position: relative;
+    padding: 5px 20px 13px 20px;
+    background: #fff;
+    border-radius:3px;
+    -webkit-transition: all 500ms ease-in;
+    -moz-transition: all 500ms ease-in;
+    transition: all 500ms ease-in;
+     
+}
+
+.movedown {
+    margin: 0 auto;
+}
+.rotate {
+    margin: 10% auto;
+    -webkit-transform: scale(-5,-5);
+    transform: scale(-5,-5);
+}
+.resize {
+    margin: 10% auto;
+    width:0;
+    height:0;
+ 
+}
+.modalmask:target .movedown{       
+    margin:10% auto;
+}
+.modalmask:target .rotate{     
+    transform: rotate(360deg) scale(1,1);
+        -webkit-transform: rotate(360deg) scale(1,1);
+}
+ 
+.modalmask:target .resize{
+    width:400px;
+    height:200px;
+}
+
+.close {
+    background: #606061;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    right: 1px;
+    text-align: center;
+    top: 1px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius:3px;
+ 
+}
+ 
+.close:hover {
+    background: #FAAC58;
+    color:#222;
+}
+    </style>
+
+    <script type="text/javascript">
+
+$(function(){
+	// Clona la fila oculta que tiene los campos base, y la agrega al final de la tabla
+	$("#agregar").on('click', function(){
+		$("#tabla tbody tr:eq(0)").clone().removeClass('fila-base').appendTo("#tabla tbody");
+	});
+
+	// Evento que selecciona la fila y la elimina
+	$(document).on("click",".eliminar",function(){
+		var parent = $(this).parents().get(0);
+		$(parent).remove();
+	});
+});
+
+    </script>
+
+
+</body>
+</html>
